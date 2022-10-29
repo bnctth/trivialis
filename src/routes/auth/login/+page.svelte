@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { invalidateAll } from '$app/navigation';
 	import type { ActionData } from './$types';
 	export let form: ActionData;
+
+	if (form?.success) invalidateAll();
 </script>
 
 <div class="row">

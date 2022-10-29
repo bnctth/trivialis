@@ -1,8 +1,14 @@
+<div class="bg">
+	<div class="capsule">
+		<slot />
+	</div>
+</div>
+
 <style>
-    .bg {
-        width: 100vw;
-        height: 100vh;
-        background-color: #3e4d5c;
+	.bg {
+		width: 100vw;
+		height: 100vh;
+		background-color: #3e4d5c;
 
         display: flex;
         justify-content: center;
@@ -13,9 +19,9 @@
         /* min-width: 25vw; */
         padding: 20px;
 
-        background-color: #6f89a3;
-        border-radius: 20px;
-    }
+		background-color: #6f89a3;
+		border-radius: 20px;
+	}
 </style>
 
 <div class="container-fluid bg">
