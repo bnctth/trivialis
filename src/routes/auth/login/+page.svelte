@@ -1,29 +1,17 @@
-<script>
-	import { enhance } from "$app/forms";
-    let username='';
-    let password='';
+<script lang="ts">
+	import { enhance } from '$app/forms';
+	import type { ActionData } from './$types';
+	export let form: ActionData;
 </script>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 mx-auto">
-            <div class=""></div>
-        </div>
-    </div>
-</div>
-
-
-<form action="?/login" use:enhance>
-<label for="username">Username</label>
-<input type="text" id="username" bind:value={username}/>
-<label for="password">Password</label>
-<input type="password" id="password" bind:value={password}/>
-<submit>Login</submit>
-<a href="../signup">If you are a new user...</a>
+<form action="?/login" method="POST" use:enhance>
+	<label for="username">Username</label>
+	<input name="username" type="text" id="username" />
+	{#if form?.missingUsername}You need to give a username{/if}
+	<label for="password">Password</label>
+	<input name="password" type="password" id="password" />
+	{#if form?.missingPassword}You need to give a password{/if}
+	<button type="submit">Login</button>
+	{#if form?.wrongDetails}Wrong details.{/if}
 </form>
-
-<style>
-    .demo-content{
-        text-align: center;
-    }
-</style>
+<a href="../signup">If you are a new user...</a>
