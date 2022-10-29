@@ -1,0 +1,11 @@
+image:
+  file: .gitpod.dockerfile
+tasks:
+  - name: sveltekit
+    init: pnpm i
+    command: pnpm dev
+
+ports:
+  - port: 5173
+    visibility: private
+    onOpen: open-browser
