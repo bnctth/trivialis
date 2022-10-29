@@ -5,7 +5,6 @@ import { prisma } from '$lib/prisma';
 import { compare } from 'bcrypt';
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
-import { invalidateAll } from '$app/navigation';
 
 export const actions: Actions = {
 	login: async ({ request, cookies }) => {
