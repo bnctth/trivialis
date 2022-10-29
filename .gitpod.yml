@@ -1,5 +1,5 @@
-image:
-  file: .gitpod.dockerfile
+image: gitpod/workspace-postgresql
+
 tasks:
   - name: sveltekit
     init: pnpm i
