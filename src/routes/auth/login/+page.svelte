@@ -3,6 +3,16 @@
     let username='';
     let password='';
 </script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <div class=""></div>
+        </div>
+    </div>
+</div>
+
+
 <form action="?/login" use:enhance>
 <label for="username">Username</label>
 <input type="text" id="username" bind:value={username}/>
@@ -11,3 +21,9 @@
 <submit>Login</submit>
 <a href="../signup">If you are a new user...</a>
 </form>
+
+<style>
+    .demo-content{
+        text-align: center;
+    }
+</style>
