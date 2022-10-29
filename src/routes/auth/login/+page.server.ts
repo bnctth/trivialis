@@ -30,7 +30,6 @@ export const actions: Actions = {
 			.setProtectedHeader({ alg: 'HS256' })
 			.sign(new TextEncoder().encode(env.SECRET));
 		cookies.set('token', token, { secure: !dev });
-        invalidateAll();
-		return;
+		return { success: true };
 	}
 };

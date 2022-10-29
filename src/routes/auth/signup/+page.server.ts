@@ -2,10 +2,9 @@ import type { Actions } from './$types';
 import { SignJWT } from 'jose';
 import { invalid } from '@sveltejs/kit';
 import { prisma } from '$lib/prisma';
-import { compare, genSalt, hash } from 'bcrypt';
+import { genSalt, hash } from 'bcrypt';
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
-import { invalidateAll } from '$app/navigation';
 
 export const actions: Actions = {
 	login: async ({ request, cookies }) => {
@@ -35,7 +34,6 @@ export const actions: Actions = {
 			.setProtectedHeader({ alg: 'HS256' })
 			.sign(new TextEncoder().encode(env.SECRET));
 		cookies.set('token', token, { secure: !dev });
-		invalidateAll();
-		return;
+		return { success: true };
 	}
 };

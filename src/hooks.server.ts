@@ -8,7 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const {
 			payload: { username, name, id }
 		} = await jwtVerify(token, new TextEncoder().encode(env.SECRET));
-		event.locals = { username, name, id };
+		event.locals = { user: { username, name, id } };
 	}
 	const response = await resolve(event);
 	return response;
