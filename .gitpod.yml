@@ -4,6 +4,8 @@ tasks:
   - name: sveltekit
     init: pnpm i
     command: pnpm dev
+  - name: prisma
+    init: npx prisma db pull
 
 ports:
   - port: 5173
