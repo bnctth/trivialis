@@ -4,14 +4,40 @@
 	export let form: ActionData;
 </script>
 
-<form action="?/login" method="POST" use:enhance>
-	<label for="username">Username</label>
-	<input name="username" type="text" id="username" />
-	{#if form?.missingUsername}You need to give a username{/if}
-	<label for="password">Password</label>
-	<input name="password" type="password" id="password" />
-	{#if form?.missingPassword}You need to give a password{/if}
-	<button type="submit">Login</button>
-	{#if form?.wrongDetails}Wrong details.{/if}
-</form>
+<div class="row">
+	<div class="col">
+		{#if form?.missingPassword}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			You need to give a password
+			<button type="button" class="btn" data-bs-dismiss="alert"></button>
+		</div>
+		{/if}
+		{#if form?.wrongDetails}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			Wrong details.
+			<button type="button" class="btn" data-bs-dismiss="alert"></button>
+		</div>
+		{/if}
+		{#if form?.missingUsername}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			You need to give a username
+			<button type="button" class="btn" data-bs-dismiss="alert"></button>
+		</div>
+		{/if}
+	</div>
+</div>
+
+<form class="row g-3" action="?/login" method="POST" use:enhance>
+	<div class="mb-auto">
+		<label for="staticEmail2" class="visually-hidden">Username</label>
+		<input name="username" id="username" type="text" class="form-control" placeholder="username">
+	</div>
+	<div class="mb-auto">
+		<label for="inputPassword2" class="visually-hidden">Password</label>
+		<input name="password" id="password" type="password" class="form-control" placeholder="Password">
+	</div>
+	<div class="d-grid gap-2">
+		<button type="submit" class="btn btn-primary mb-3">Login</button>
+	</div>
+	</form>
 <a href="../signup">If you are a new user...</a>

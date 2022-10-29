@@ -9,16 +9,19 @@
         align-items: center;
     }
     .capsule {
-        height: 50vh;
-        min-width: 25vw;
+        /* height: 50vh; */
+        /* min-width: 25vw; */
+        padding: 20px;
 
         background-color: #6f89a3;
         border-radius: 20px;
     }
 </style>
 
-<div class="bg">
-    <div class="capsule">
-        <slot />
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-6 mx-auto capsule">
+            <slot />
+        </div>
     </div>
 </div>
