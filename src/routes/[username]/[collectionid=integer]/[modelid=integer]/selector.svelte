@@ -23,8 +23,8 @@
 		>
 		{#each selectable as model (model.id)}
 			<a href="./{model.id}">
-				<div class="selectable" class:selected={model.id == +data.modelid}>
-					<span>{model.title}</span>
+				<div class="selectable" class:selected={model.id == +data.modelid} style="background: url({model.photo}); background-size: cover;">
+					<span class="txtbg">{model.title}</span>
 				</div>
 			</a>
 		{/each}
@@ -66,6 +66,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	.txtbg{
+		background: #ffffff88;
+		padding: 0 2px;
+		border-radius: 10px;
 	}
 </style>
 

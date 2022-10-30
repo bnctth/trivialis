@@ -36,6 +36,7 @@ model Model {
   collectionId Int
   tags String[]
   link String
+  photo String?
   likes Likes[]
   comments Comment[]
 }
