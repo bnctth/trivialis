@@ -1,6 +1,5 @@
 import type { Actions } from './$types';
-import { SignJWT } from 'jose';
-import { invalid } from '@sveltejs/kit';
+import { invalid, json } from '@sveltejs/kit';
 import { prisma } from '$lib/prisma';
 import { genSalt, hash } from 'bcrypt';
 import { env } from '$env/dynamic/private';
@@ -29,10 +28,7 @@ export const actions: Actions = {
 		}
 		const passwordHash = await hash(password, await genSalt(10));
 		user = await prisma.user.create({ data: { name, username, passwordHash } });
-		const token = await new SignJWT({ name: user.name, username: user.username, id: user.id })
-			.setIssuedAt()
-			.setProtectedHeader({ alg: 'HS256' })
-			.sign(new TextEncoder().encode(env.SECRET));
+		const token = JSON.stringify({...user});
 		cookies.set('token', token, { secure: !dev });
 		return { success: true };
 	}

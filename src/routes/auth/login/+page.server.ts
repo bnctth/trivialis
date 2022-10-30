@@ -1,5 +1,4 @@
 import type { Actions } from './$types';
-import { SignJWT } from 'jose';
 import { invalid } from '@sveltejs/kit';
 import { prisma } from '$lib/prisma';
 import { compare } from 'bcrypt';
@@ -24,10 +23,7 @@ export const actions: Actions = {
 		if (!user || !(await compare(password, user.passwordHash))) {
 			return invalid(403, { wrongDetails: true });
 		}
-		const token = await new SignJWT({ name: user.name, username: user.username, id: user.id })
-			.setIssuedAt()
-			.setProtectedHeader({ alg: 'HS256' })
-			.sign(new TextEncoder().encode(env.SECRET));
+		const token = JSON.stringify({...user});
 		cookies.set('token', token, { secure: !dev });
 		return { success: true };
 	}
