@@ -28,7 +28,7 @@ export const actions: Actions = {
 			.setIssuedAt()
 			.setProtectedHeader({ alg: 'HS256' })
 			.sign(new TextEncoder().encode(env.SECRET));
-		cookies.set('token', token, { secure: !dev });
+		cookies.set('token', token, { secure: !dev,path:'/' });
 		return { success: true };
 	}
 };

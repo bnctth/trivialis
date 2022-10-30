@@ -5,10 +5,14 @@ import { jwtVerify } from 'jose';
 export const handle: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get('token');
 	if (token) {
-		const {
-			payload: { username, name, id }
-		} = await jwtVerify(token, new TextEncoder().encode(env.SECRET));
-		event.locals = { user: { username, name, id } };
+		try {
+			const {
+				payload: { username, name, id }
+			} = await jwtVerify(token, new TextEncoder().encode(env.SECRET));
+			event.locals = { user: { username, name, id } };
+		} catch (e) {
+			event.cookies.delete('token');
+		}
 	}
 	const response = await resolve(event);
 	return response;

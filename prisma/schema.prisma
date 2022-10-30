@@ -17,6 +17,7 @@ model User {
   passwordHash  String
   collections Collection[]
   likes Likes[]
+  comments Comment[]
 }
 
 model Collection {
@@ -35,6 +36,7 @@ model Model {
   tags String[]
   link String
   likes Likes[]
+  comments Comment[]
 }
 
 model Likes {
@@ -44,4 +46,13 @@ model Likes {
   modelId Int
 
   @@id([userId,modelId])
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  sender User @relation(fields: [senderId], references: [id])
+  senderId Int
+  model Model @relation(fields: [modelId], references: [id])
+  modelId Int
+  content String
 }
