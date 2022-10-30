@@ -30,7 +30,6 @@
 		"@prisma/client": "^4.5.0",
 		"@types/bcrypt": "^5.0.0",
 		"bcrypt": "^5.1.0",
-		"jose": "^4.10.4",
 		"prisma": "^4.5.0"
 	},
 	"type": "module"

@@ -1,10 +1,10 @@
 import type { Actions } from './$types';
-import { SignJWT } from 'jose';
 import { invalid } from '@sveltejs/kit';
 import { prisma } from '$lib/prisma';
 import { compare } from 'bcrypt';
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
+import { SignJWT } from 'jose';
 
 export const actions: Actions = {
 	login: async ({ request, cookies }) => {
