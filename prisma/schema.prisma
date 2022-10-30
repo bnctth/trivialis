@@ -14,6 +14,7 @@ model User {
   id  Int @id @default(autoincrement())
   username  String  @unique
   name  String
+  bio String?
   passwordHash  String
   collections Collection[]
   likes Likes[]

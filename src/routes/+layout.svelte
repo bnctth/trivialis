@@ -33,10 +33,11 @@
 		display: flex;
 		justify-content: right;
 		align-items: center;
+		z-index: 999;
 	}
 	.account {
 		height: 100%;
-		background: #6e7e8f;
+		background: #6f89a3;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

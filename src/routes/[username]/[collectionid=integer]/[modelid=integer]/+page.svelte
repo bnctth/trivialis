@@ -13,7 +13,7 @@
 <div class="flex fullsize">
 	<div class="flex vertical">
 		<div class="flex toppadding">
-			<span class="capsule">{data.collection.owner.name}</span>
+			<a href="/{data.user.username}" class="capsule">{data.collection.owner.name}</a>
 			<span class="capsule">{data.collection.title}</span>
 		</div>
 		<div class="separator" />
