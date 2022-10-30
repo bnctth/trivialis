@@ -41,12 +41,11 @@ model Model {
 }
 
 model Likes {
+  id Int @id @default(autoincrement())
   user User @relation(fields: [userId],references: [id])
   userId Int
   model Model @relation(fields: [modelId],references: [id])
   modelId Int
-
-  @@id([userId,modelId])
 }
 
 model Comment {
