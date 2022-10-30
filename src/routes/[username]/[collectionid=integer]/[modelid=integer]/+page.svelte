@@ -2,6 +2,7 @@
 	import Selector from './selector.svelte';
 
 	import type { PageData } from './$types';
+	import { invalidateAll } from '$app/navigation';
 
 	export let data: PageData;
 	$: selected = data.collection.models.findIndex((m) => m.id == +data.modelid);
@@ -9,6 +10,7 @@
 		await fetch(`${data.modelid}/like`, {
 			method: 'POST'
 		});
+		invalidateAll();
 	};
 </script>
 
