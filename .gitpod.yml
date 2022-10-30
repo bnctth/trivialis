@@ -5,9 +5,12 @@ tasks:
     init: pnpm i
     command: pnpm dev
   - name: prisma
-    init: npx prisma db pull
+    init: npx prisma db push
+  - name: .env
+    init: echo "SECRET=asd" > .env; exit
 
 ports:
   - port: 5173
     visibility: private
     onOpen: open-browser
+  - port: 5432

@@ -50,6 +50,7 @@ model Likes {
 
 model Comment {
   id Int @id @default(autoincrement())
+  sentAt DateTime @default(now())
   sender User @relation(fields: [senderId], references: [id])
   senderId Int
   model Model @relation(fields: [modelId], references: [id])
