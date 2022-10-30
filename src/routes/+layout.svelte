@@ -45,4 +45,8 @@
 	.account span{
 		padding: 0 10px;
 	}
+	*{
+		color: #fff;
+		text-decoration: none;
+	}
 </style>
